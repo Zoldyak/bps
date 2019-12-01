@@ -29,11 +29,11 @@ border-radius: 15px 75px;
   </div>
 </div> -->
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12" style="background-color: #262b2d !important">
           <p class="display-4 font-weight-bold text-center font-italic" style="color: #888888;font-family:'dubielitalic',Arial, sans-serif; font-size: 1.9em;">Apa itu</p>
           <p class="display-4  text-center" style="color: #ffffff; text-transform: uppercase; font-size: 1.9em;">IPM ?</p>
   </div>
-    <div class="col-md-12">
+    <div class="col-md-12" style="background-color: #262b2d !important">
       <div class="container">
         <div class="row">
           <div class="col-md-6">
@@ -85,15 +85,37 @@ border-radius: 15px 75px;
         </div>
       </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12" style="background: #1b213b;">
+      <div class="row">
+
+
+        <div class="container">
+            <br>
+          <div class="" id="app3">
+            <div class="col-md-4"style="color: #fff;background: #ffffff21;border-radius: 5px;">
+
+              <h4>Data Tahun 2013</h4>
+              <hr style="background: #fff;">
+              <ul class="list-group" >
+                <li v-for="listlabel in label2"  class="list-group-item d-flex justify-content-between align-items-center" style="background: none;border-top: none;border-left: none;border-right: none;border-color: #fff; padding:unset;">
+                  {{ listlabel.label}}
+                  <span class="badge badge-primary badge-pill">  </span>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12" style="background: #1b213b;">
       <div class="container">
         <div class="row">
           <div class="col-md-6 offset-md-3">
-            <div id="appl">
-              <div id="chart" ref="chart">
-                <apexcharts type="donut" :width="380" :height="380" :options="chartOptions" :series="series1"></apexcharts>
+              <div id="chart2" ref="chart">
+                  <apexchart ref="realtimeChart" type=line height=350 :options="chartOptions" :series="series" />
               </div>
-            </div>
           </div>
         </div>
       </div>

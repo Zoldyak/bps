@@ -5,7 +5,8 @@
       Include 'inc/metacss.php';
     ?>
   </head>
-  <body style="background-color: #262b2d !important">
+  <body >
+    
       <?php
         include $halaman
       ?>
