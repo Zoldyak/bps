@@ -12,6 +12,7 @@ var app = new Vue({
 			// series1: [20,20,20,40],
 			series1: [],
 			labels1: [],
+
 		}
 	},
 	computed: {
@@ -281,10 +282,12 @@ var app3 = new Vue({
 	// 	url: 'http://localhost/bps/',
 	// },
 	data() {
-		return {
-			label2: [],
-			dataseries2: [],
-			url: 'http://localhost/bps/',
+			return {
+				label2: [],
+				dataseries2: [],
+				url: 'http://localhost/bps/',
+      	keydata2:[]
+
 		}
 	},
 	mounted: function() {
@@ -315,7 +318,7 @@ var app3 = new Vue({
 					// }
 					// console.log(k);
 					let arraydata = [];
-					// arraydata.push(dataku)
+					arraydata.push(dataku)
 					k.forEach(function(datalabel) {
 						// console.log("label:" + datalabel['val']);
 						app3.label2.push(datalabel);
@@ -334,9 +337,12 @@ var app3 = new Vue({
 											// console.log("hasil"+hasil+2);
 											var hasilkey = datalabel['val'].toString() + datavariabel['val'].toString() + dataturvar['val'].toString() + datatahun['val'].toString() + dataturtahun['val'].toString();
 											// console.log(datalabel['val'].toString() + datavariabel['val'].toString() + dataturvar['val'].toString() + datatahun['val'].toString() + dataturtahun['val'].toString());
-											arraydata.forEach(function(hasildata) {
-												// console.log(hasilkey + ":" + hasildata[hasilkey]);
-												app3.dataseries2.push(hasildata[hasilkey]);
+                      app3.keydata2.push(hasilkey)
+                      arraydata.forEach(function(hasildata) {
+												console.log(hasilkey + ":" + hasildata[hasilkey]);
+												app3.dataseries2.push({namalabel:datalabel['label'],
+																							nilai:hasildata[hasilkey],
+																							width:hasildata[hasilkey]});
 											})
 										})
 									}

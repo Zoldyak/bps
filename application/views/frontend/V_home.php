@@ -96,15 +96,36 @@ border-radius: 15px 75px;
 
               <h4>Data Tahun 2013</h4>
               <hr style="background: #fff;">
-              <ul class="list-group" >
-                <li v-for="listlabel in label2"  class="list-group-item d-flex justify-content-between align-items-center" style="background: none;border-top: none;border-left: none;border-right: none;border-color: #fff; padding:unset;">
+              <div class="" v-for="listdata in dataseries2">
+                <!-- <div class="" v-for="listkey in keydata2"> -->
+                  <!-- <div class="" v-for="listdata in dataseries2" v-bind:key="listlabel.label"> -->
+                   <!-- <progress value="{{ listdata.nilai }}" max="100"></progress> -->
+                   <span>{{ listdata.namalabel }}{{ listdata.nilai }}</span><br>
+                   <progress max="100" value="71"></progress>
+
+                    <!-- <div class="progress">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="{{ listdata.nilai }}" aria-valuemin="0" aria-valuemax="100"></div>
+
+                    </div> -->
+                  <!-- </div> -->
+                <!-- </div> -->
+              </div>
+
+              <!-- <ul class="list-group" >
+                <li v-for="listlabel in label2"  class="list-group-item d-flex justify-content-between align-items-center" style="background: none;border-top: none;border-left: none;border-right: none;border-color: #fff; ">
                   {{ listlabel.label}}
+
                   <span class="badge badge-primary badge-pill">  </span>
                 </li>
 
-              </ul>
+              </ul> -->
             </div>
+
           </div>
+
+        </div>
+        <div class="col-md-8">
+          firman
         </div>
       </div>
     </div>
