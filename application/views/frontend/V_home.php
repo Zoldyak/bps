@@ -86,46 +86,37 @@ border-radius: 15px 75px;
       </div>
     </div>
     <div class="col-md-12" style="background: #1b213b;">
-      <div class="row">
+      <div class="container" >
+        <br>
+        <div class="row">
 
-
-        <div class="container">
-            <br>
-          <div class="" id="app3">
-            <div class="col-md-4"style="color: #fff;background: #ffffff21;border-radius: 5px;">
-
+          <div class="col-md-3" style="color: #fff;background: #ffffff21;border-radius: 5px;">
+            <div class="" id="app3">
               <h4>Data Tahun 2013</h4>
               <hr style="background: #fff;">
               <div class="" v-for="listdata in dataseries2">
-                <!-- <div class="" v-for="listkey in keydata2"> -->
-                  <!-- <div class="" v-for="listdata in dataseries2" v-bind:key="listlabel.label"> -->
-                   <!-- <progress value="{{ listdata.nilai }}" max="100"></progress> -->
-                   <span>{{ listdata.namalabel }}{{ listdata.nilai }}</span><br>
-                   <progress max="100" value="71"></progress>
-
-                    <!-- <div class="progress">
-                      <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="{{ listdata.nilai }}" aria-valuemin="0" aria-valuemax="100"></div>
-
-                    </div> -->
-                  <!-- </div> -->
-                <!-- </div> -->
+                   <span>{{ listdata.namalabel }} : {{ listdata.nilai }}</span><br>
+                   <div class="progress">
+                      <div class="progress-bar" role="progressbar"  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"  :style = "{ 'width':listdata.width+'%'}"></div>
+                  </div>
               </div>
+            </div>
+            <br>
+          </div>
 
-              <!-- <ul class="list-group" >
-                <li v-for="listlabel in label2"  class="list-group-item d-flex justify-content-between align-items-center" style="background: none;border-top: none;border-left: none;border-right: none;border-color: #fff; ">
-                  {{ listlabel.label}}
-
-                  <span class="badge badge-primary badge-pill">  </span>
-                </li>
-
-              </ul> -->
+          <div class="col-md-8" style=";background: #ffffff21;border-radius: 5px;margin-left: 10px;">
+            <!-- <div id="chart2" ref="chart">
+                <apexchart ref="realtimeChart" type=line height=350 :options="chartOptions" :series="series" />
+            </div> -->
+            <div class="row">
+              <div class="col-md-6">
+                <div id="chart4">
+                  <apexchart type=line height=350 :options="chartOptions" :series="series" />
+                </div>
+              </div>
             </div>
 
           </div>
-
-        </div>
-        <div class="col-md-8">
-          firman
         </div>
       </div>
     </div>
@@ -134,9 +125,9 @@ border-radius: 15px 75px;
       <div class="container">
         <div class="row">
           <div class="col-md-6 offset-md-3">
-              <div id="chart2" ref="chart">
+              <!-- <div id="chart2" ref="chart">
                   <apexchart ref="realtimeChart" type=line height=350 :options="chartOptions" :series="series" />
-              </div>
+              </div> -->
           </div>
         </div>
       </div>

@@ -141,137 +141,7 @@ var app = new Vue({
 		},
 	}
 });
-//
-//
-//
-//
-//
-//
-//
-// var lastDate = 0;
-// var data = []
-//
-// function getDayWiseTimeSeries(baseval, count, yrange) {
-// 	var i = 0;
-// 	// console.log("baseval:" + baseval);
-// 	while (i < count) {
-// 		// console.log("count:" + count);
-// 		var x = baseval;
-// 		var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-// 		data.push({
-// 			x,
-// 			y
-// 		});
-// 		lastDate = baseval
-// 		baseval += 86400000;
-// 		i++;
-//
-// 	}
-// }
-// getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, {
-// 	min: 10,
-// 	max: 90
-// })
-//
-// function getNewSeries(baseval, yrange) {
-// 	var newDate = baseval + 86400000;
-// 	lastDate = newDate
-// 	data.push({
-// 		x: newDate,
-// 		y: Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min
-// 	})
-// }
-//
-// function resetData() {
-// 	data = data.slice(data.length - 10, data.length);
-// }
-// new Vue({
-// 	el: '#chart2',
-// 	components: {
-// 		apexchart: VueApexCharts,
-// 	},
-// 	data: {
-// 		series: [{
-// 			data: data.slice()
-// 		}],
-// 		chartOptions: {
-// 			chart: {
-// 				animations: {
-// 					enabled: true,
-// 					easing: 'linear',
-// 					dynamicAnimation: {
-// 						speed: 1000
-// 					}
-// 				},
-// 				foreColor: '#fff',
-// 				toolbar: {
-// 					show: false
-// 				},
-// 				zoom: {
-// 					enabled: false
-// 				}
-// 			},
-// 			colors: ['#FCCF31', '#17ead9', '#f02fc2'],
-// 			fill: {
-// 				type: 'gradient',
-// 				gradient: {
-// 					gradientToColors: ['#F55555', '#6078ea', '#6094ea']
-// 				},
-// 			},
-// 			grid: {
-// 				borderColor: "#40475D",
-// 			},
-// 			dataLabels: {
-// 				enabled: false
-// 			},
-// 			stroke: {
-// 				curve: 'smooth'
-// 			},
-// 			title: {
-// 				text: 'Dynamic Updating Chart',
-// 				align: 'left'
-// 			},
-// 			markers: {
-// 				size: 0
-// 			},
-// 			xaxis: {
-// 				type: 'datetime',
-// 				range: 777600000,
-// 			},
-// 			yaxis: {
-// 				max: 100
-// 			},
-// 			legend: {
-// 				show: false
-// 			}
-// 		}
-// 	},
-// 	mounted: function() {
-// 		this.intervals()
-// 	},
-// 	methods: {
-// 		intervals: function() {
-// 			var me = this
-// 			window.setInterval(function() {
-// 				getNewSeries(lastDate, {
-// 					min: 10,
-// 					max: 90
-// 				})
-//
-// 				me.$refs.realtimeChart.updateSeries([{
-// 					data: data
-// 				}])
-// 			}, 1000)
-// 			// every 60 seconds, we reset the data to prevent memory leaks
-// 			window.setInterval(function() {
-// 				resetData()
-// 				me.$refs.realtimeChart.updateSeries([{
-// 					data
-// 				}], false, true)
-// 			}, 60000)
-// 		}
-// 	}
-// })
+
 
 
 var app3 = new Vue({
@@ -302,7 +172,8 @@ var app3 = new Vue({
 					// app.noResult()
 					console.log(err);
 				} else {
-					console.log("data berhasil diambil");
+					// console.log("data berhasil diambil");
+
 					let h = response.data;
 					let i = response.data.var;
 					let j = response.data.turvar;
@@ -310,6 +181,14 @@ var app3 = new Vue({
 					let dataku = response.data.datacontent;
 					let m = response.data.tahun;
 					let n = response.data.turtahun;
+					let warna_bar=[];
+					let letters = '0123456789ABCDEF';
+				  let color = '#';
+					let awal;
+				  for (awal = 0; awal < 6; awal++) {
+				    color += letters[Math.floor(Math.random() * 16)];
+						warna_bar.push(color);
+				  }
 					// app3.label2 = k;
 					// if (app3.label2 != null) {
 					// console.log(k);
@@ -339,10 +218,13 @@ var app3 = new Vue({
 											// console.log(datalabel['val'].toString() + datavariabel['val'].toString() + dataturvar['val'].toString() + datatahun['val'].toString() + dataturtahun['val'].toString());
                       app3.keydata2.push(hasilkey)
                       arraydata.forEach(function(hasildata) {
-												console.log(hasilkey + ":" + hasildata[hasilkey]);
+												// color += letters[Math.floor(Math.random() * 16)];
+												// console.log(warna_bar);
+												// console.log(hasilkey + ":" + hasildata[hasilkey]);
 												app3.dataseries2.push({namalabel:datalabel['label'],
 																							nilai:hasildata[hasilkey],
-																							width:hasildata[hasilkey]});
+																							width:Math.ceil(hasildata[hasilkey]),
+																							color_bar:warna_bar});
 											})
 										})
 									}
@@ -357,4 +239,131 @@ var app3 = new Vue({
 			})
 		}
 	}
+})
+var app4=new Vue({
+	el: '#chart4',
+	components: {
+		apexchart: VueApexCharts,
+	},
+	data: {
+			url: 'http://localhost/bps/',
+		series: [
+			{
+				name: "High - 2013",
+				data: [28, 29, 33, 36, 32, 32, 33]
+			},
+			{
+				name: "Low - 2013",
+				data: [12, 11, 14, 18, 17, 13, 13]
+			}
+		],
+		chartOptions: {
+			chart: {
+				shadow: {
+					enabled: true,
+					color: '#000000',
+					top: 18,
+					left: 7,
+					// blur: 10,
+					opacity: 1
+				},
+					foreColor: '#ffffff',
+				toolbar: {
+					show: false
+				}
+			},
+
+			colors: ['#FCCF31', '#f079b6'],
+			fill: {
+                type: 'gradient',
+                gradient: {
+                    shade: 'dark',
+                  	gradientToColors: ['#F55555', '#c3116c'],
+                    shadeIntensity: 1,
+                    type: 'horizontal',
+                    opacityFrom: 1,
+                    // opacityTo: 1,
+                    stops: [0, 100, 100, 100]
+                },
+            },
+			dataLabels: {
+				enabled: true,
+				color:'#000'
+			},
+			stroke: {
+				curve: 'smooth'
+			},
+			title: {
+				text: 'Average High & Low Temperature',
+				align: 'left',
+			color: '#fff',
+			},
+			grid: {
+				borderColor: '#e7e7e7',
+				row: {
+					colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+					opacity: 0.5
+				},
+			},
+			markers: {
+
+				size: 6
+			},
+			xaxis: {
+				categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+				title: {
+					text: 'Month',
+					color: '#FFFFFF',
+				},
+				fill: {
+                type: 'solid',
+                color: '#B1B9C4',
+                gradient: {
+                    colorFrom: '#D8E3F0',
+                    colorTo: '#BED1E6',
+                    stops: [0, 100],
+                    // opacityFrom: 0.4,
+                    // opacityTo: 0.5,
+                },
+            }
+			},
+			yaxis: {
+				title: {
+					text: 'Temperature'
+				},
+				color: '#fff',
+				min: 5,
+				max: 40
+			},
+			legend: {
+				position: 'top',
+				horizontalAlign: 'right',
+				floating: true,
+				offsetY: -25,
+				offsetX: -5,
+				labels: {
+					colors: '#ffffff',
+					useSeriesColors: false
+				}
+			}
+		}
+	},
+	mounted: function() {
+		// console.log('mounted()..');
+		this.showdatakonten()
+		// console.log(label2);
+	},
+	methods: {
+		showdatakonten() {
+			axios.get(this.url + "Home/getData").then(function(response) {
+				if (response.data == null) {
+					// app.noResult()
+					console.log(err);
+				} else {
+					
+				}
+			})
+		},
+	}
+
 })
