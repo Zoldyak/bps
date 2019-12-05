@@ -79,7 +79,7 @@ var app = new Vue({
 	// this.url + "/Home/getData"
 
 	mounted: function() {
-		console.log('mounted()..');
+		// console.log('mounted()..');
 		this.showAll()
 		// console.log(this.users);
 	},
@@ -123,7 +123,7 @@ var app = new Vue({
 												var hasilkey = datalabel['val'].toString() + datavariabel['val'].toString() + dataturvar['val'].toString() + datatahun['val'].toString() + dataturtahun['val'].toString();
 												// console.log(datalabel['val'].toString()+datavariabel['val'].toString()+dataturvar['val'].toString()+datatahun['val'].toString()+dataturtahun['val'].toString());
 												arraydata.forEach(function(hasildata) {
-													// console.log(hasilkey + ":" + hasildata[hasilkey]);
+													// console.log(hasildata[hasilkey]);
 													app.series1.push(hasildata[hasilkey]);
 												})
 											})
@@ -240,110 +240,210 @@ var app3 = new Vue({
 		}
 	}
 })
+
+
 var app4=new Vue({
 	el: '#chart4',
 	components: {
 		apexchart: VueApexCharts,
 	},
-	data: {
+	data: function() {
+    return {
 			url: 'http://localhost/bps/',
-		series: [
-			{
-				name: "High - 2013",
-				data: [28, 29, 33, 36, 32, 32, 33]
-			},
-			{
-				name: "Low - 2013",
-				data: [12, 11, 14, 18, 17, 13, 13]
-			}
-		],
-		chartOptions: {
 			chart: {
-				shadow: {
-					enabled: true,
-					color: '#000000',
-					top: 18,
-					left: 7,
-					// blur: 10,
-					opacity: 1
+            id: 'vuechart-example',
+          },
+			series: [
+				{
+					name: "High - 2013",
+					data: [28, 29, 33, 36, 32, 32, 33],
+					// categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
 				},
-					foreColor: '#ffffff',
-				toolbar: {
-					show: false
+				{
+					name: "Low - 2013",
+					data: [12, 11, 14, 18, 17, 13, 13],
+					// categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
 				}
-			},
+			],
 
-			colors: ['#FCCF31', '#f079b6'],
-			fill: {
-                type: 'gradient',
-                gradient: {
-                    shade: 'dark',
-                  	gradientToColors: ['#F55555', '#c3116c'],
-                    shadeIntensity: 1,
-                    type: 'horizontal',
-                    opacityFrom: 1,
-                    // opacityTo: 1,
-                    stops: [0, 100, 100, 100]
-                },
-            },
-			dataLabels: {
-				enabled: true,
-				color:'#000'
-			},
-			stroke: {
-				curve: 'smooth'
-			},
-			title: {
-				text: 'Average High & Low Temperature',
-				align: 'left',
-			color: '#fff',
-			},
-			grid: {
-				borderColor: '#e7e7e7',
-				row: {
-					colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-					opacity: 0.5
+    }
+  },
+	computed: {
+		chartOptions: function() {
+			return {
+				chart: {
+					shadow: {
+						enabled: true,
+						color: '#000000',
+						top: 18,
+						left: 7,
+						// blur: 10,
+						opacity: 1
+					},
+						foreColor: '#ffffff',
+					toolbar: {
+						show: false
+					}
 				},
-			},
-			markers: {
 
-				size: 6
-			},
-			xaxis: {
-				categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-				title: {
-					text: 'Month',
-					color: '#FFFFFF',
-				},
+				colors: ['#FCCF31', '#f079b6'],
 				fill: {
-                type: 'solid',
-                color: '#B1B9C4',
-                gradient: {
-                    colorFrom: '#D8E3F0',
-                    colorTo: '#BED1E6',
-                    stops: [0, 100],
-                    // opacityFrom: 0.4,
-                    // opacityTo: 0.5,
-                },
-            }
-			},
-			yaxis: {
-				title: {
-					text: 'Temperature'
+									type: 'gradient',
+									gradient: {
+											shade: 'dark',
+											gradientToColors: ['#F55555', '#c3116c'],
+											shadeIntensity: 1,
+											type: 'horizontal',
+											opacityFrom: 1,
+											// opacityTo: 1,
+											stops: [0, 100, 100, 100]
+									},
+							},
+				dataLabels: {
+					enabled: true,
+					color:'#000'
 				},
+				stroke: {
+					curve: 'smooth'
+				},
+				title: {
+					text: 'Average High & Low Temperature',
+					align: 'left',
 				color: '#fff',
-				min: 5,
-				max: 40
-			},
-			legend: {
-				position: 'top',
-				horizontalAlign: 'right',
-				floating: true,
-				offsetY: -25,
-				offsetX: -5,
-				labels: {
-					colors: '#ffffff',
-					useSeriesColors: false
+				},
+				grid: {
+					borderColor: '#e7e7e7',
+					row: {
+						colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+						opacity: 0.5
+					},
+				},
+				markers: {
+
+					size: 6
+				},
+				xaxis: {
+				        // type: 'category',
+				        // categories: [],
+
+
+				        labels: {
+				            show: true,
+				            rotate: -45,
+				            rotateAlways: false,
+				            hideOverlappingLabels: true,
+				            showDuplicates: true,
+				            trim: true,
+				            minHeight: undefined,
+				            maxHeight: 120,
+				            style: {
+				                colors: [],
+				                fontSize: '12px',
+				                fontFamily: 'Helvetica, Arial, sans-serif',
+				                cssClass: 'apexcharts-xaxis-label',
+				            },
+				            offsetX: 0,
+				            offsetY: 0,
+				            format: undefined,
+				            formatter: undefined,
+				            datetimeFormatter: {
+				                year: 'yyyy',
+				                month: "MMM 'yy",
+				                day: 'dd MMM',
+				                hour: 'HH:mm',
+				            },
+				        },
+				        axisBorder: {
+				            show: true,
+				            color: '#78909C',
+				            height: 1,
+				            width: '100%',
+				            offsetX: 0,
+				            offsetY: 0
+				        },
+				        axisTicks: {
+				            show: true,
+				            borderType: 'solid',
+				            color: '#78909C',
+				            height: 6,
+				            offsetX: 0,
+				            offsetY: 0
+				        },
+				        tickAmount: undefined,
+				        tickPlacement: 'between',
+				        min: undefined,
+				        max: undefined,
+				        range: undefined,
+				        floating: false,
+				        position: 'bottom',
+				        title: {
+				            text: undefined,
+				            offsetX: 0,
+				            offsetY: 0,
+				            style: {
+				                color: undefined,
+				                fontSize: '12px',
+				                fontFamily: 'Helvetica, Arial, sans-serif',
+				                cssClass: 'apexcharts-xaxis-title',
+				            },
+				        },
+				        crosshairs: {
+				            show: true,
+				            width: 1,
+				            position: 'back',
+				            opacity: 0.9,
+				            stroke: {
+				                color: '#b6b6b6',
+				                width: 0,
+				                dashArray: 0,
+				            },
+				            fill: {
+				                type: 'solid',
+				                color: '#B1B9C4',
+				                gradient: {
+				                    colorFrom: '#D8E3F0',
+				                    colorTo: '#BED1E6',
+				                    stops: [0, 100],
+				                    opacityFrom: 0.4,
+				                    opacityTo: 0.5,
+				                },
+				            },
+				            dropShadow: {
+				                enabled: false,
+				                top: 0,
+				                left: 0,
+				                blur: 1,
+				                opacity: 0.4,
+				            },
+				        },
+				        tooltip: {
+				            enabled: true,
+				            formatter: undefined,
+				            offsetY: 0,
+				            style: {
+				              fontSize: 0,
+				              fontFamily: 0,
+				            },
+				        },
+				    },
+				yaxis: {
+					title: {
+						text: 'Temperature'
+					},
+					color: '#fff',
+					min: 5,
+					max: 40
+				},
+				legend: {
+					position: 'top',
+					horizontalAlign: 'right',
+					floating: true,
+					offsetY: -25,
+					offsetX: -5,
+					labels: {
+						colors: '#ffffff',
+						useSeriesColors: false
+					}
 				}
 			}
 		}
@@ -352,15 +452,86 @@ var app4=new Vue({
 		// console.log('mounted()..');
 		this.showdatakonten()
 		// console.log(label2);
+		// console.log(options.xaxis.categories)
 	},
 	methods: {
 		showdatakonten() {
+
 			axios.get(this.url + "Home/getData").then(function(response) {
 				if (response.data == null) {
 					// app.noResult()
 					console.log(err);
 				} else {
-					
+					console.log("app4");
+
+					// v.getData(response.data.users);
+					// console.log(response.data.vervar)
+					let h = response.data;
+					let i = response.data.var;
+					let j = response.data.turvar;
+					let k = response.data.vervar;
+					let dataku = response.data.datacontent;
+					let m = response.data.tahun;
+					let n = response.data.turtahun;
+					let datatahun=['10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '01:00', '01:30']
+					let arraydata = [];
+					let data=[];
+					arraydata.push(dataku)
+					// console.log(arraydata)
+					// console.log(n)
+					k.forEach(function(datalabel) {
+						if (datalabel['label'] == 'IPM' || datalabel['label'] == 'Indeks Kesehatan' || datalabel['label'] == 'Indeks Pendidikan' || datalabel['label'] == 'Pengeluaran Per Kapita Riil Disesuaikan (Rp.000)') {
+							// console.log("label:"+datalabel['val']);
+							// app4.chartOptions.xaxis.categories.push(datalabel['label']);
+
+							i.forEach(function(datavariabel) {
+								// console.log("variabel:"+datavariabel['val']);
+								j.forEach(function(dataturvar) {
+									// console.log("turvar:"+dataturvar['val']);
+									m.forEach(function(datatahun) {
+									// 	let nilaitahun=datatahun['label']
+									// 	let stringtahun=nilaitahun.toString()
+									// 	ApexCharts.exec('vuechart-example', 'updateSeries', [{
+									//   data: [32, 44, 31, 41, 22]
+									// }], false);
+									// 	// app4.chartOptions = {
+										// 	   xaxis: {
+										// 	     categories: datatahun['label']
+										// 	   }
+										// 	 },
+										// 	 this.chartOptions = {...this.chartOptions, ...{
+										// 	     xaxis: {
+										// 				 	type: 'category',
+										// 	         categories: datatahun
+										// 	     }
+										// 	 }}
+											n.forEach(function(dataturtahun) {
+												// console.log("turtahun:"+dataturtahun['val']);
+												// var hasil = datalabel['val'].toString();
+												// console.log("hasil"+hasil+2);
+												var hasilkey = datalabel['val'].toString() + datavariabel['val'].toString() + dataturvar['val'].toString() + datatahun['val'].toString() + dataturtahun['val'].toString();
+												// console.log(datalabel['val'].toString()+datavariabel['val'].toString()+dataturvar['val'].toString()+datatahun['val'].toString()+dataturtahun['val'].toString());
+												arraydata.forEach(function(hasildata) {
+													// console.log(hasilkey + ":" + hasildata[hasilkey]);
+													// app.series1.push(hasildata[hasilkey]);
+													// data.push({x:datatahun['label'],
+													// 											y:hasildata[hasilkey],
+													// 											})
+													// app4.series.push(data);
+													// app4.series.push([{
+													//   data:
+													//     categories: hasildata[hasilkey]
+													// }])
+												})
+											})
+
+
+									})
+								})
+							})
+						}
+					});
+
 				}
 			})
 		},

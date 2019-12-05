@@ -109,9 +109,26 @@ border-radius: 15px 75px;
                 <apexchart ref="realtimeChart" type=line height=350 :options="chartOptions" :series="series" />
             </div> -->
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12" >
+                <!-- <div class="app">
+                	<h1>Line Chart</h1>
+                	<line-chart></line-chart>
+                </div> -->
+
                 <div id="chart4">
-                  <apexchart type=line height=350 :options="chartOptions" :series="series" />
+                  <apexchart ref="chart4" type=line height=350 :options="chartOptions" :series="series" />
+                </div>
+              </div>
+              <div class="col-md-12" style="color:#fff">
+                <div class="app">
+                  	<h1>Bar Chart</h1>
+                  	<reactive :chart-data="datacollection"></reactive>
+                  	<!-- <button class="button is-primary" @click="fillData()">Randomize</button> -->
+                  </div>
+                <!-- <div class="chartjs">
+                    {{ message }} -->
+                  <!-- <line-chart ></line-chart> -->
+                  <!-- <reactive :chart-data="datacollection"></reactive> -->
                 </div>
               </div>
             </div>
