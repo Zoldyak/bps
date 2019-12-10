@@ -32,7 +32,7 @@ Vue.component('line-chart', {
         // app.noResult()
         console.log(err);
       } else {
-        console.log("data berhasil diambil chart js");
+        // console.log("data berhasil diambil chart js");
 
         let h = response.data;
         let i = response.data.var;

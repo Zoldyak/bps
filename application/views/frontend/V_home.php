@@ -88,6 +88,7 @@ border-radius: 15px 75px;
     <div class="col-md-12" style="background: #1b213b;">
       <div class="container" >
         <br>
+
         <div class="row">
 
           <div class="col-md-3" style="color: #fff;background: #ffffff21;border-radius: 5px;">
@@ -104,27 +105,38 @@ border-radius: 15px 75px;
             <br>
           </div>
 
-          <div class="col-md-8" style=";background: #ffffff21;border-radius: 5px;margin-left: 10px;">
+          <div class="col-md-8" style="border-radius: 5px;margin-left: 10px;">
             <!-- <div id="chart2" ref="chart">
                 <apexchart ref="realtimeChart" type=line height=350 :options="chartOptions" :series="series" />
             </div> -->
             <div class="row">
-              <div class="col-md-12" >
-                <!-- <div class="app">
-                	<h1>Line Chart</h1>
-                	<line-chart></line-chart>
-                </div> -->
+              <!-- <div class="col-md-12" >
 
-                <div id="chart4">
-                  <apexchart ref="chart4" type=line height=350 :options="chartOptions" :series="series" />
+              </div> -->
+              <div class="col-md-6" style="color:#fff;background: #ffffff21;border-radius: 5px">
+                <h2 style="font-size: 24px;font-variant-caps: all-small-caps;">Index Pendidikan</h2>
+                <div class="app" >
+                  <!-- <button @click="show = !show">Click</button> -->
+                  <!-- <div v-if="show"> -->
+                    <line-chart :chart-data="message" ></line-chart>
+
+                     <!-- <line-chart currency="€":chart-data="message" :width="400" :height="200"></line-chart> -->
+                   <!-- </div> -->
                 </div>
-              </div>
-              <div class="col-md-12" style="color:#fff">
-                <div class="app">
-                  	<h1>Bar Chart</h1>
+                <!-- <div class="app">
+                  	<h1>Bar Chart {{url}}</h1>
+                    <ul>
+                      <li v-for="test in aku">
+                        {{test}}
+                      </li>
+                      <ul>
+                        <li v-for="testw in datacollection">
+                          {{testw}}
+                        </li>
+                    </ul>
                   	<reactive :chart-data="datacollection"></reactive>
-                  	<!-- <button class="button is-primary" @click="fillData()">Randomize</button> -->
-                  </div>
+                  	<button class="button is-primary" @click="fillData()">Randomize</button>
+                  </div> -->
                 <!-- <div class="chartjs">
                     {{ message }} -->
                   <!-- <line-chart ></line-chart> -->
