@@ -85,83 +85,64 @@ border-radius: 15px 75px;
         </div>
       </div>
     </div>
-    <div class="col-md-12" style="background: #1b213b;">
+
+    <div class="col-sm-12" style="background: #1b213b;">
+      <br>
       <div class="container" >
-        <br>
-
-        <div class="row">
-
-          <div class="col-md-3" style="color: #fff;background: #ffffff21;border-radius: 5px;">
-            <div class="" id="app3">
-              <h4>Data Tahun 2013</h4>
-              <hr style="background: #fff;">
-              <div class="" v-for="listdata in dataseries2">
-                   <span>{{ listdata.namalabel }} : {{ listdata.nilai }}</span><br>
-                   <div class="progress">
-                      <div class="progress-bar" role="progressbar"  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"  :style = "{ 'width':listdata.width+'%'}"></div>
+        <div class=" row ">
+          <div class="col-4"  >
+            <div class="card" style="color: #fff;background: #ffffff21;border-radius: 5px;">
+              <div class="card-header">
+                <div class="" id="app3">
+                  <h4>Data Tahun 2013</h4>
+                  <hr style="background: #fff;">
+                  <div class="" v-for="listdata in dataseries2">
+                       <span>{{ listdata.namalabel }} : {{ listdata.nilai }}</span><br>
+                       <div class="progress">
+                          <div class="progress-bar" role="progressbar"  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"  :style = "{ 'width':listdata.width+'%'}"></div>
+                      </div>
                   </div>
+                </div>
+              </div>
+              <div class="card-body">
+
               </div>
             </div>
-            <br>
           </div>
-
-          <div class="col-md-8" style="border-radius: 5px;margin-left: 10px;">
-            <!-- <div id="chart2" ref="chart">
-                <apexchart ref="realtimeChart" type=line height=350 :options="chartOptions" :series="series" />
-            </div> -->
-            <div class="row">
-              <!-- <div class="col-md-12" >
-
-              </div> -->
-              <div class="col-md-6" style="color:#fff;background: #ffffff21;border-radius: 5px">
-                <h2 style="font-size: 24px;font-variant-caps: all-small-caps;">Index Pendidikan</h2>
-                <div class="app" >
-                  <!-- <button @click="show = !show">Click</button> -->
-                  <!-- <div v-if="show"> -->
-                    <line-chart :chart-data="message" ></line-chart>
-
-                     <!-- <line-chart currency="€":chart-data="message" :width="400" :height="200"></line-chart> -->
-                   <!-- </div> -->
+          <div class="col-8">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6" >
+                  <div class="card" style="color: #fff;background: #ffffff21;border-radius: 5px;">
+                    <div class="card-header">
+                      Featured
+                    </div>
+                    <div class="card-body">
+                      <div class="app" >
+                          <line-chart :chart-data="message" ></line-chart>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <!-- <div class="app">
-                  	<h1>Bar Chart {{url}}</h1>
-                    <ul>
-                      <li v-for="test in aku">
-                        {{test}}
-                      </li>
-                      <ul>
-                        <li v-for="testw in datacollection">
-                          {{testw}}
-                        </li>
-                    </ul>
-                  	<reactive :chart-data="datacollection"></reactive>
-                  	<button class="button is-primary" @click="fillData()">Randomize</button>
-                  </div> -->
-                <!-- <div class="chartjs">
-                    {{ message }} -->
-                  <!-- <line-chart ></line-chart> -->
-                  <!-- <reactive :chart-data="datacollection"></reactive> -->
+                <div class="col-md-6" >
+                  <div class="card" style="color: #fff;background: #ffffff21;border-radius: 5px;">
+                    <div class="card-header">
+                      Featured
+                    </div>
+                    <div class="card-body">
+                      <div class="ratalamasekolah">
+                        <line-chart-ratalamasekolah :chart-data="datasekolah"></line-chart-ratalamasekolah>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            </div>
 
-          </div>
-        </div>
       </div>
     </div>
-
-    <div class="col-md-12" style="background: #1b213b;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 offset-md-3">
-              <!-- <div id="chart2" ref="chart">
-                  <apexchart ref="realtimeChart" type=line height=350 :options="chartOptions" :series="series" />
-              </div> -->
-          </div>
-        </div>
-      </div>
     </div>
-
 
   </div>
 </div>
