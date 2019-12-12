@@ -112,7 +112,7 @@ border-radius: 15px 75px;
           <div class="col-8">
             <div class="container">
               <div class="row">
-                <div class="col-md-6" >
+                <div class="col-md-6" style="margin-top: 5px;">
                   <div class="card" style="color: #fff;background: #ffffff21;border-radius: 5px;">
                     <div class="card-header">
                       Featured
@@ -124,7 +124,7 @@ border-radius: 15px 75px;
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6" >
+                <div class="col-md-6" style="margin-top: 5px;">
                   <div class="card" style="color: #fff;background: #ffffff21;border-radius: 5px;">
                     <div class="card-header">
                       Featured
@@ -133,6 +133,36 @@ border-radius: 15px 75px;
                       <div class="ratalamasekolah">
                         <line-chart-ratalamasekolah :chart-data="datasekolah"></line-chart-ratalamasekolah>
                       </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6" style="margin-top: 5px;">
+                  <div class="card" style="color: #fff;background: #ffffff21;border-radius: 5px;">
+                    <div class="card-header">
+                      Featured
+                    </div>
+                    <div class="card-body">
+                      <div class="appkesehatan">
+
+                      <line-chart-kesehatan :chart-data="datakesehatan"></line-chart-kesehatan>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6" style="margin-top: 5px;">
+
+                  <div class="card" style=";background: #ffffff21;border-radius: 5px;">
+
+                    <div class="card-header" style="color:#fff">
+                      Featured
+                    </div>
+                    <div id="AngkaHarapanHidup">
+                     <div>
+                       <apexchartsahh width="100%" type="bar" height="300" :options="chartOptions" :series="series"></apexchartsahh>
+                     </div>
+                   </div>
+                    <div class="card-body">
+
                     </div>
                   </div>
                 </div>

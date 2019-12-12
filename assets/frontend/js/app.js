@@ -80,6 +80,7 @@ var app = new Vue({
 
 	mounted: function() {
 		// console.log('mounted()..');
+		// console.log("url nya adalah"+ this.url);
 		this.showAll()
 		// console.log(this.users);
 	},
@@ -138,6 +139,7 @@ var app = new Vue({
 
 				}
 			})
+
 		},
 	}
 });
