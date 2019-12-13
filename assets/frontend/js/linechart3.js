@@ -614,6 +614,18 @@ var appAHH = new Vue({
                                                       },
 
                                                 },
+                                                colors: ['#ffed00', '#f079b6'],
+                                                fill: {
+                                                type: 'gradient',
+                                                    gradient: {
+                                                      gradientToColors: ['#DDB51C', '#c3116c']
+                                                      // inverseColors: true,
+                                                      // shadeIntensity: 1,
+                                                      // opacityFrom: 0.5,
+                                                      // opacityTo: 1,
+                                                      // stops: [0, 90, 100]
+                                                    }
+                                              },
                                                 plotOptions: {
                                                   bar: {
                                                       horizontal: true,
@@ -653,38 +665,31 @@ var appAHH = new Vue({
                                                     },
                                                     legend: {
                                                       show: true,
+                                                      // color:"#ffffff",
                                                       position: 'bottom',
+                                                       showForSingleSeries: false,
+                                                       showForNullSeries: true,
+                                                       showForZeroSeries: true,
                                                       onItemHover: {
                                                         highlightDataSeries: true
                                                     },
+                                                    labels: {
+                                                     colors: "#ffffff",
+                                                     useSeriesColors: false
+                                                 },
                                                   }
         },
         aku1:[],
         series: [{
-          name: 'series-1',
-          data: [30, 40, 45, 50, 49, 60, 70, 91, 70, 91]
+
+          // data: [30, 40, 45, 50, 49, 60, 70, 91, 70, 91]
         }]
       }
     },
     mounted: function() {
-        // console.log("data nya adalah"+ this.series[0].data);
-                // console.log(this.chartOptions);
-                // this.fillDataahh()
                 this.getdataahh()
     },
       methods: {
-        // fillDataahh(){
-        //   this.getdataahh();
-        //   var labelahh1=[1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
-        //   // console.log(labelahh1);
-        //   var dataahh=[30, 40, 45, 50, 49, 60, 70, 91]
-        //   this.series[0].data.push(dataahh);
-        //                           this.chartOptions={
-        //
-        //                           }
-        //                     console.log(this.chartOptions);
-        //
-        // },
         getdataahh(){
 
                     // var aku1=[1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
@@ -705,32 +710,67 @@ var appAHH = new Vue({
                            let n = response.data.turtahun;
                            let arraydata = [];
                            arraydata.push(dataku)
-                           // sini.push(dataku)
+
                            let lebelahh=[]
+                           let dataahh=[];
+                           let dataindexkes=[];
                            var labelsku= ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
                            m.forEach(function(datalabel) {
-                                         // listlabel.push("tahun: "+datalabel['label'].toString());
-                                          // vm.datacollection.labels.push(listlabel);
+                              // lebelahh.push(parseInt(datalabel['label']));
+                              lebelahh.push(datalabel['label']);
+                           })
+                           k.forEach(function(datalabel) {
 
-
-
-                                         // return datalabel['label']
-                                         // this.appAHH.chartOptions.xaxis.categories.push(parseInt(datalabel['label']))
-                                         // this.appAHH.aku1.push(parseInt(datalabel['label']));
-                                         lebelahh.push(parseInt(datalabel['label']));
+                               // console.log("label:"+datalabel['val']);
+                               // app.labels1.push(datalabel['label']);
+                               i.forEach(function(datavariabel) {
+                                 // console.log("variabel:"+datavariabel['val']);
+                                 j.forEach(function(dataturvar) {
+                                   // console.log("turvar:"+dataturvar['val']);
+                                   m.forEach(function(datatahun) {
+                                     // let last=datatahun[datatahun.length-1];
+                                       // console.log("tahun:"+datatahun['val']);
+                                       n.forEach(function(dataturtahun) {
+                                         // console.log("turtahun:"+dataturtahun['val']);
+                                         // var hasil = datalabel['val'].toString();
+                                         // console.log("hasil"+hasil+2);
+                                         var hasilkey = datalabel['val'].toString() + datavariabel['val'].toString() + dataturvar['val'].toString() + datatahun['val'].toString() + dataturtahun['val'].toString();
+                                         // console.log(datalabel['val'].toString()+datavariabel['val'].toString()+dataturvar['val'].toString()+datatahun['val'].toString()+dataturtahun['val'].toString());
+                                         arraydata.forEach(function(hasildata) {
+                                           // console.log(hasildata[hasilkey]);
+                                            if (datalabel['label'] == 'Angka Harapan Hidup (Tahun)') {
+                                           dataahh.push(hasildata[hasilkey].toString());
+                                           }
+                                           if (datalabel['label'] == 'Indeks Kesehatan') {
+                                          dataindexkes.push(hasildata[hasilkey].toString());
+                                          }
+                                           // this.ks.xdatakesehatan.push(hasildata[hasilkey].toString());
+                                         })
                                        })
-                                       const colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0']
 
-     // Make sure to update the whole options config and not just a single property to allow the Vue watch catch the change.
-// console.log(this.appAHH.chartOptions);
-                                       this.appAHH.chartOptions = {
-                                         xaxis:{
-                                            categories:lebelahh,
-                                         }
-                                         // colors: [colors[Math.floor(Math.random()*colors.length)]]
-                                       };
+
+                                   })
+                                 })
+                               })
+
+                           })
+
+                           console.log(dataahh);
+                          this.appAHH.chartOptions = {
+                            xaxis:{
+                              categories:lebelahh,
+                                }
+                            };
+                          this.appAHH.series = [{
+                              name: 'Angka Harapan Hidup (Tahun)',
+                                data: dataahh
+                          },
+                          {
+                              name: 'Indeks Kesehatan',
+                                data: dataindexkes
+                          }
+                        ]
                         }
-
                       })
         }
       }

@@ -90,13 +90,13 @@ border-radius: 15px 75px;
       <br>
       <div class="container" >
         <div class=" row ">
-          <div class="col-4"  >
+          <div class="col-3"  >
             <div class="card" style="color: #fff;background: #ffffff21;border-radius: 5px;">
               <div class="card-header">
                 <div class="" id="app3">
                   <h4>Data Tahun 2013</h4>
                   <hr style="background: #fff;">
-                  <div class="" v-for="listdata in dataseries2">
+                  <div class="" v-for="listdata in dataseries2" style="fontSize:11px;">
                        <span>{{ listdata.namalabel }} : {{ listdata.nilai }}</span><br>
                        <div class="progress">
                           <div class="progress-bar" role="progressbar"  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"  :style = "{ 'width':listdata.width+'%'}"></div>
@@ -109,7 +109,7 @@ border-radius: 15px 75px;
               </div>
             </div>
           </div>
-          <div class="col-8">
+          <div class="col-9">
             <div class="container">
               <div class="row">
                 <div class="col-md-6" style="margin-top: 5px;">
@@ -154,11 +154,11 @@ border-radius: 15px 75px;
                   <div class="card" style=";background: #ffffff21;border-radius: 5px;">
 
                     <div class="card-header" style="color:#fff">
-                      Featured
+                      Kesehatan
                     </div>
                     <div id="AngkaHarapanHidup">
                      <div>
-                       <apexchartsahh width="100%" type="bar" height="300" :options="chartOptions" :series="series"></apexchartsahh>
+                       <apexchartsahh width="100%" type="bar" height="400" :options="chartOptions" :series="series"></apexchartsahh>
                      </div>
                    </div>
                     <div class="card-body">

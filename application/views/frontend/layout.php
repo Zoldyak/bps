@@ -21,8 +21,8 @@
 
   <script src="<?php echo $this->config->item('frontend') ?>/js/vue.min.js"></script>
   <!-- <script src="" charset="utf-8"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-<script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
+  <script src="<?php echo $this->config->item('frontend') ?>/js/Chart.min.js"></script>
+<script src="<?php echo $this->config->item('frontend') ?>/js/vue-chartjs.min.js"></script>
   <!-- <script src="https://unpkg.com/vue-chartjs@2.8.5" charset="utf-8"></script> -->
   <script src="<?php echo $this->config->item('frontend') ?>/js/axios.min.js"></script>
   <script src="<?php echo $this->config->item('frontend') ?>/js/app.js"></script>
