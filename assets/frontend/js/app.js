@@ -80,7 +80,7 @@ var app = new Vue({
 
 	mounted: function() {
 		// console.log('mounted()..');
-		// console.log("url nya adalah"+ this.url);
+		console.log("url nya adalah"+ this.url);
 		this.showAll()
 		// console.log(this.users);
 	},
@@ -163,7 +163,7 @@ var app3 = new Vue({
 		}
 	},
 	mounted: function() {
-		console.log('mounted()..');
+		// console.log(this.dataseries2);
 		this.showdata2013()
 		// console.log(label2);
 	},
@@ -464,7 +464,7 @@ var app4=new Vue({
 					// app.noResult()
 					console.log(err);
 				} else {
-					console.log("app4");
+					// console.log("app4");
 
 					// v.getData(response.data.users);
 					// console.log(response.data.vervar)

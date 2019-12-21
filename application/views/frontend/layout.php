@@ -29,5 +29,17 @@
   <script src="<?php echo $this->config->item('frontend') ?>/js/Linechart.js"></script>
   <!-- <script src="<?php echo $this->config->item('frontend') ?>/js/Linechart2.js"></script> -->
   <script src="<?php echo $this->config->item('frontend') ?>/js/Linechart3.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" charset="utf-8"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" charset="utf-8"></script>
+  <script>
+    $(document).ready(function() {
+      $('#example').DataTable({
+        scrollY:     300,
+        "scrollX": true,
+        scroller:    true
+      });
+    } );
+  </script>
+
   </body>
 </html>

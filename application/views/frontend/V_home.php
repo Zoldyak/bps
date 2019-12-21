@@ -171,6 +171,120 @@ border-radius: 15px 75px;
             </div>
 
       </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-md-12">
+        <div class="container-fluid">
+            <br>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card" style=";background: #ffffff21;border-radius: 5px;">
+
+                <div class="card-header" style="color:#fff">
+                  Grafik IPM
+                </div>
+                <div class="" id="data2013">
+                   <apexchartdata2013 type=bar height=350 :options="chartOptions" :series="series" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card" style=";background: #ffffff21;border-radius: 5px;">
+                <div class="card-header" style="color:#fff">
+                All  Data
+                </div>
+                <div class="card-body">
+                  <div class="" id="alldataipm">
+                    <div class="table-responsive" style="position: relative;height: 320px;overflow: auto;">
+                      <table class="table table-striped table-dark table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Indikator</th>
+
+                            <th v-for="listtahun in tahun">
+                              {{listtahun}}
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr >
+                            <td v-for="listipm in dataipm">
+                              {{listipm}}
+                            </td>
+
+                          </tr>
+                          <tr>
+                            <td v-for="listahh in dataahh">
+                              {{listahh}}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td v-for="listinkes in datainkes">
+                              {{listinkes}}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td v-for="listaamh in dataamh">
+                              {{listaamh}}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td v-for="listrls in datarls">
+                              {{listrls}}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td v-for="listinpe in datainpe">
+                              {{listinpe}}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td v-for="listipp in dataipp">
+                              {{listipp}}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td v-for="listrs in datars">
+                              {{listrs}}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td v-for="listppk in datappk">
+                              {{listppk}}
+                            </td>
+                          </tr>
+                          <!-- <tr v-for="listdata in dataseriesall">
+                            <td >
+                              {{listdata}}
+                            </td>
+                          </tr> -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="container-fluid">
+          <br>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card" style=";background: #ffffff21;border-radius: 5px;">
+
+                <div class="card-header" style="color:#fff">
+                  Grafik Angka Harapan Hidup
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     </div>
 

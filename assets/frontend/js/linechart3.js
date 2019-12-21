@@ -700,7 +700,7 @@ var appAHH = new Vue({
                                     console.log(err);
                                   }
                         else{
-                          console.log("data AHH");
+                          // console.log("data AHH");
                           let h = response.data;
                            let i = response.data.var;
                            let j = response.data.turvar;
@@ -755,7 +755,7 @@ var appAHH = new Vue({
 
                            })
 
-                           console.log(dataahh);
+                           // console.log(dataahh);
                           this.appAHH.chartOptions = {
                             xaxis:{
                               categories:lebelahh,
@@ -775,3 +775,383 @@ var appAHH = new Vue({
         }
       }
 });
+
+Vue.use(VueApexCharts);
+var alldata2013=new Vue({
+  el: '#data2013',
+  components: {
+    apexchartdata2013: VueApexCharts,
+  },
+  data: {
+    url: 'http://localhost/bps/',
+    keydata2:[],
+    series: [{
+      data: []
+    }],
+
+    chartOptions: {
+      chart: {
+       stackType: '100%'
+     },
+      plotOptions: {
+        bar: {
+          barHeight: '100%',
+           columnWidth: '100%',
+          distributed: true,
+          horizontal: true,
+          dataLabels: {
+             maxItems: 100,
+            position: 'bottom'
+          },
+        }
+      },
+      colors: ['#33b2df', '#546E7A', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e',
+        '#f48024', '#69d2e7'
+      ],
+      dataLabels: {
+        enabled: true,
+        textAnchor: 'start',
+        style: {
+          fontSize: '10px',
+          fontFamily: 'Helvetica, Arial, sans-serif',
+          colors: ['#fff']
+
+        },
+        formatter: function (val, opt) {
+          return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val
+        },
+        offsetX: 0,
+        dropShadow: {
+          enabled: true
+        }
+      },
+
+      stroke: {
+        width: 1,
+        colors: ['#fff']
+      },
+      xaxis: {
+        // categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
+        //   'United States', 'China', 'India'
+        // ],
+      },
+      yaxis: {
+        labels: {
+          show: false
+        }
+      },
+      title: {
+          text: 'IPM',
+          align: 'center',
+          floating: true,
+          style: {
+                color:  '#ffffff'
+              }
+      },
+      // subtitle: {
+      //     text: 'Category Names as DataLabels inside bars',
+      //     align: 'center',
+      //     style: {
+      //           color:  '#ffffff'
+      //         }
+      // },
+      tooltip: {
+        theme: 'dark',
+        x: {
+          show: false
+        },
+        y: {
+          title: {
+            formatter: function () {
+              return ''
+            }
+          }
+        }
+      }
+
+    },
+
+
+  },
+  mounted: function() {
+		// console.log('mounted()..');
+		this.getdata2013()
+		// console.log(label2);
+	},
+  methods:{
+    getdata2013() {
+      axios.get(this.url + "Home/getData").then(function(response) {
+        if (response.data == null) {
+          // app.noResult()
+          console.log(err);
+        } else {
+          // console.log("data berhasil diambil all");
+          let lebelall2013=[]
+          let dataall2013=[];
+          let h = response.data;
+          let i = response.data.var;
+          let j = response.data.turvar;
+          let k = response.data.vervar;
+          let dataku = response.data.datacontent;
+          let m = response.data.tahun;
+          let n = response.data.turtahun;
+          let warna_bar=[];
+          let letters = '0123456789ABCDEF';
+          let color = '#';
+          let awal;
+          for (awal = 0; awal < 6; awal++) {
+            color += letters[Math.floor(Math.random() * 16)];
+            warna_bar.push(color);
+          }
+          // app3.label2 = k;
+          // if (app3.label2 != null) {
+          // console.log(k);
+          // } else {
+          // 	console.log("salah");
+          // }
+          // console.log(k);
+          let arraydata = [];
+          arraydata.push(dataku)
+          k.forEach(function(datalabel) {
+            if (datalabel['label'] == 'IPM') {
+            // lebelall2013.push(datalabel['label']);
+            // console.log("label:" + datalabel['val']);
+            // app3.label2.push(datalabel);
+            // app3.label2 = datalabel;
+            i.forEach(function(datavariabel) {
+              // console.log("variabel:"+datavariabel['val']);
+              j.forEach(function(dataturvar) {
+                // console.log("turvar:"+dataturvar['val']);
+                m.forEach(function(datatahun) {
+                  // let last=datatahun[datatahun.length-1];
+                  lebelall2013.push(datatahun['label']);
+                    // console.log("tahun:"+datatahun['val']);
+                    n.forEach(function(dataturtahun) {
+                      // console.log("turtahun:"+dataturtahun['val']);
+                      // var hasil = datalabel['val'].toString();
+                      // console.log("hasil"+hasil+2);
+                      var hasilkey = datalabel['val'].toString() + datavariabel['val'].toString() + dataturvar['val'].toString() + datatahun['val'].toString() + dataturtahun['val'].toString();
+                      // console.log(datalabel['val'].toString() + datavariabel['val'].toString() + dataturvar['val'].toString() + datatahun['val'].toString() + dataturtahun['val'].toString());
+                      // alldata2013.keydata2.push(hasilkey)
+                      arraydata.forEach(function(hasildata) {
+                         dataall2013.push(parseFloat(hasildata[hasilkey]));
+                        // color += letters[Math.floor(Math.random() * 16)];
+                        // console.log(warna_bar);
+                        // console.log(hasilkey + ":" + hasildata[hasilkey]);
+                        // app3.dataseries2.push({namalabel:datalabel['label'],
+                        //                       nilai:hasildata[hasilkey],
+                        //                       width:Math.ceil(hasildata[hasilkey]),
+                        //                       color_bar:warna_bar});
+                      })
+                    })
+
+
+                })
+              })
+            })
+}
+          });
+          // var sortvalue=dataall2013.sort(function(a, b){return a - b});
+          // console.log(dataall2013);
+          this.alldata2013.chartOptions = {
+            xaxis:{
+              categories:lebelall2013,
+                }
+            };
+            this.alldata2013.series = [{
+                data: dataall2013
+            }]
+          // console.log(lebelall2013);
+        }
+      })
+    }
+  }
+})
+
+
+var all = new Vue({
+	el: '#alldataipm',
+	data() {
+			return {
+				labelall: [],
+				dataseriesall: [],
+        dataipm:["IPM"],
+        dataahh:["Angka Harapan Hidup (Tahun)"],
+        datainkes:["Indeks Kesehatan"],
+        dataamh:["Angka Melek Huruf ( Persen)"],
+        datarls:["Rata-rata Lama Sekolah (tahun)"],
+        datainpe:["Indeks Pendidikan"],
+        dataipp:['Indeks PPP (Daya Beli)'],
+        datars:['Reduksi Shortfall'],
+        datappk:['Pengeluaran Per Kapita Riil Disesuaikan (Rp.000)'],
+        tahun:[],
+				url: 'http://localhost/bps/',
+      	// keydata2:[],
+        message:"hallo Vue!"
+
+		}
+	},
+	mounted: function() {
+		console.log(this.dataipm);
+		this.showdataall()
+		// console.log(label2);
+	},
+	methods: {
+		showdataall() {
+			axios.get(this.url + "Home/getData").then(function(response) {
+				if (response.data == null) {
+					// app.noResult()
+					console.log(err);
+				} else {
+					console.log("data berhasil diambil all");
+
+					let h = response.data;
+					let i = response.data.var;
+					let j = response.data.turvar;
+					let k = response.data.vervar;
+					let dataku = response.data.datacontent;
+					let m = response.data.tahun;
+					let n = response.data.turtahun;
+					let warna_bar=[];
+					let letters = '0123456789ABCDEF';
+				  let color = '#';
+					let awal;
+				  for (awal = 0; awal < 6; awal++) {
+				    color += letters[Math.floor(Math.random() * 16)];
+						warna_bar.push(color);
+				  }
+					// app3.label2 = k;
+					// if (app3.label2 != null) {
+					// console.log(k);
+					// } else {
+					// 	console.log("salah");
+					// }
+					let arraydata = [];
+					arraydata.push(dataku)
+          // console.log(arraydata);
+          m.forEach(function(datatahun) {
+            this.all.tahun.push(datatahun['label']);
+          })
+					k.forEach(function(datalabel) {
+            // arr.unique();
+            console.log("label:" + datalabel['label']);
+						this.all.labelall.push(datalabel['label']);
+						// app3.label2 = datalabel;
+						i.forEach(function(datavariabel) {
+							// console.log("variabel:"+datavariabel['val']);
+							j.forEach(function(dataturvar) {
+								// console.log("turvar:"+dataturvar['val']);
+								m.forEach(function(datatahun) {
+									// let last=datatahun[datatahun.length-1];
+                  	// this.all.tahun.push(datatahun['label']);
+										// console.log("tahun:"+datatahun['val']);
+										n.forEach(function(dataturtahun) {
+											// console.log("turtahun:"+dataturtahun['val']);
+											// var hasil = datalabel['val'].toString();
+											// console.log("hasil"+hasil+2);
+											var hasilkey = datalabel['val'].toString() + datavariabel['val'].toString() + dataturvar['val'].toString() + datatahun['val'].toString() + dataturtahun['val'].toString();
+											// console.log(datalabel['val'].toString() + datavariabel['val'].toString() + dataturvar['val'].toString() + datatahun['val'].toString() + dataturtahun['val'].toString());
+                      // all.keydata2.push(hasilkey)
+                      arraydata.forEach(function(hasildata) {
+												// color += letters[Math.floor(Math.random() * 16)];
+												// console.log({hasildata[hasilkey].toString():	hasildata[hasilkey]});
+												// console.log(hasilkey + ":" + hasildata[hasilkey]);
+                        // if (hasilkey.slice(0,1)==1) {
+                        //   // console.log(hasilkey);
+                        //   this.all.dataseriesall.push(
+  											// 												"IPM":hasildata[hasilkey],
+                        //                       );
+                        // }
+                        if (datalabel['label']=="IPM") {
+                          this.all.dataipm.push(
+                                                // namalabel:datalabel['label'],
+                                                hasildata[hasilkey],
+  																							// width:Math.ceil(hasildata[hasilkey]),
+  																							// color_bar:warna_bar
+                                              );
+                        }
+                        if (datalabel['label']=="Angka Harapan Hidup (Tahun)") {
+                          this.all.dataahh.push(
+                                                // namalabel:datalabel['label'],
+                                                hasildata[hasilkey],
+  																							// width:Math.ceil(hasildata[hasilkey]),
+  																							// color_bar:warna_bar
+                                              );
+                        }
+                        if (datalabel['label']=="Indeks Kesehatan") {
+                          this.all.datainkes.push(
+                                                // namalabel:datalabel['label'],
+                                                hasildata[hasilkey],
+  																							// width:Math.ceil(hasildata[hasilkey]),
+  																							// color_bar:warna_bar
+                                              );
+                        }
+                        if (datalabel['label']=="Angka Melek Huruf ( Persen)") {
+                          this.all.dataamh.push(
+                                                // namalabel:datalabel['label'],
+                                                hasildata[hasilkey],
+  																							// width:Math.ceil(hasildata[hasilkey]),
+  																							// color_bar:warna_bar
+                                              );
+                        }
+                        if (datalabel['label']=="Rata-rata Lama Sekolah (tahun)") {
+                          this.all.datarls.push(
+                                                // namalabel:datalabel['label'],
+                                                hasildata[hasilkey],
+  																							// width:Math.ceil(hasildata[hasilkey]),
+  																							// color_bar:warna_bar
+                                              );
+                        }
+                        if (datalabel['label']=="Indeks Pendidikan") {
+                        this.all.datainpe.push(
+                                              // namalabel:datalabel['label'],
+                                              hasildata[hasilkey],
+                                              // width:Math.ceil(hasildata[hasilkey]),
+                                              // color_bar:warna_bar
+                                            );
+                        }
+                        if (datalabel['label']=="Indeks PPP (Daya Beli)") {
+                        this.all.dataipp.push(
+                                              // namalabel:datalabel['label'],
+                                              hasildata[hasilkey],
+                                              // width:Math.ceil(hasildata[hasilkey]),
+                                              // color_bar:warna_bar
+                                            );
+                        }
+                        if (datalabel['label']=="Reduksi Shortfall") {
+                        this.all.datars.push(
+                                              // namalabel:datalabel['label'],
+                                              hasildata[hasilkey],
+                                              // width:Math.ceil(hasildata[hasilkey]),
+                                              // color_bar:warna_bar
+                                            );
+                        }
+                        if (datalabel['label']=="Pengeluaran Per Kapita Riil Disesuaikan (Rp.000)") {
+                        this.all.datappk.push(
+                                              // namalabel:datalabel['label'],
+                                              hasildata[hasilkey],
+                                              // width:Math.ceil(hasildata[hasilkey]),
+                                              // color_bar:warna_bar
+                                            );
+                        }
+												this.all.dataseriesall.push(
+                                              // namalabel:datalabel['label'],
+																							hasildata[hasilkey],
+																							// width:Math.ceil(hasildata[hasilkey]),
+																							// color_bar:warna_bar
+                                            );
+											})
+										})
+
+
+								})
+							})
+						})
+
+					});
+
+				}
+			})
+		}
+	}
+})
