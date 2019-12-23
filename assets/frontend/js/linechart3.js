@@ -785,20 +785,22 @@ var alldata2013 = new Vue({
 			plotOptions: {
 				bar: {
 					barHeight: '100%',
-					columnWidth: '100%',
+					// columnWidth: '100%',
 					distributed: true,
 					horizontal: true,
 					dataLabels: {
 						maxItems: 100,
-						position: 'bottom'
+						position: 'center'
 					},
 				}
 			},
-			colors: ['#007dff', '#00ffb2', '#ff004e', '#00d7ff', '#f923e3', '#fefb0a', '#52ff00', '#b721ff', '#00c9ff', '#f9d423'],
+			colors: ['#3498db', '#2ecc71', '#f1c40f', '#e74c3c', '#a569bd', '#fefb0a', '#52ff00', '#b721ff', '#00c9ff', '#f9d423'],
 			fill: {
 				type: 'gradient',
 				gradient: {
-					gradientToColors: ['#0c76bb', '#0ad497', '#de0345', '#00a8c7', '#6e23f9', '#ff3600', '#58e316', '#e8198b', '#009efd', '#f83600']
+
+					gradientToColors: ['#1a5276', '#117864', '#b7950b', '#7b241c', '#633974', '#ff3600', '#58e316', '#e8198b', '#009efd', '#f83600'],
+					// type:'vertical'
 				},
 			},
 			dataLabels: {
@@ -830,8 +832,15 @@ var alldata2013 = new Vue({
 			},
 			yaxis: {
 				labels: {
-					show: false
-				}
+					show: true,
+					style: {
+						color: "#ffffff",
+						fontSize: '12px',
+						fontFamily: 'Helvetica, Arial, sans-serif',
+						cssClass: 'apexcharts-yaxis-label',
+					},
+				},
+
 			},
 			title: {
 				text: 'IPM',
@@ -948,7 +957,16 @@ var alldata2013 = new Vue({
 					// console.log(dataall2013);
 					this.alldata2013.chartOptions = {
 						xaxis: {
+
 							categories: lebelall2013,
+							labels: {
+								style: {
+									colors: "#ffffff",
+									fontSize: '12px',
+									fontFamily: 'Helvetica, Arial, sans-serif',
+									cssClass: 'apexcharts-xaxis-label',
+								},
+							},
 						}
 					};
 					this.alldata2013.series = [{
@@ -1166,6 +1184,7 @@ var appreduksi = new Vue({
 				chart: {
 					id: 'vuechart-example'
 				},
+
 				xaxis: {
 
 					labels: {
@@ -1699,9 +1718,9 @@ var applama = new Vue({
 
 Vue.use(VueApexCharts);
 var apppengeluaran = new Vue({
-	el: '#pengeluaranppp',
+	el: '#pengeluaran',
 	components: {
-		pengeluaranppp: VueApexCharts,
+		pengeluaran: VueApexCharts,
 	},
 	data: function() {
 		return {
@@ -1725,11 +1744,196 @@ var apppengeluaran = new Vue({
 
 				},
 
-				colors: ['#be02f6', '#06cade'],
+				colors: [ '#06cade'],
 				fill: {
 					type: 'gradient',
 					gradient: {
-						gradientToColors: ['#3a02f6', '#92f602'],
+						gradientToColors: ['#92f602'],
+
+						type: 'vertical',
+
+					}
+				},
+				plotOptions: {
+					bar: {
+						horizontal: false,
+						// endingShape: 'flat',
+						// columnWidth: '70%',
+						// barHeight: '70%',
+						// distributed: false,
+					}
+				},
+				yaxis: {
+					labels: {
+						show: true,
+						align: 'right',
+						minWidth: 0,
+						maxWidth: 160,
+						style: {
+							color: "#ffffff",
+							fontSize: '12px',
+							fontFamily: 'Helvetica, Arial, sans-serif',
+							cssClass: 'apexcharts-yaxis-label',
+						},
+					},
+				},
+				grid: {
+					position: 'back',
+					borderColor: '#282c3d',
+					xaxis: {
+						lines: {
+							show: true
+						}
+					},
+					yaxis: {
+						lines: {
+							show: true
+						}
+					}
+				},
+				legend: {
+					show: true,
+					color: "#ffffff",
+					position: 'bottom',
+					showForSingleSeries: false,
+					showForNullSeries: true,
+					showForZeroSeries: true,
+					onItemHover: {
+						highlightDataSeries: true
+					},
+					labels: {
+						colors: "#ffffff",
+						useSeriesColors: false
+					},
+				}
+			},
+			aku1: [],
+			series: [{
+
+				// data: [30, 40, 45, 50, 49, 60, 70, 91, 70, 91]
+			}]
+		}
+	},
+	mounted: function() {
+		this.getdataahh()
+	},
+	methods: {
+		getdataahh() {
+
+			// var aku1=[1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+			axios.get(this.url + "Home/getData").then(function(response) {
+				var sini = []
+				if (response.data == null) {
+					// app.noResult()
+					console.log(err);
+				} else {
+					console.log("data lama");
+					let h = response.data;
+					let i = response.data.var;
+					let j = response.data.turvar;
+					let k = response.data.vervar;
+					let dataku = response.data.datacontent;
+					let m = response.data.tahun;
+					let n = response.data.turtahun;
+					let arraydata = [];
+					arraydata.push(dataku)
+
+					let lebelahh = []
+					let datappp = [];
+					let datapengeluaran = [];
+					var labelsku = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+					m.forEach(function(datalabel) {
+						// lebelahh.push(parseInt(datalabel['label']));
+						lebelahh.push(datalabel['label']);
+					})
+					k.forEach(function(datalabel) {
+
+						// console.log("label:"+datalabel['val']);
+						// app.labels1.push(datalabel['label']);
+						i.forEach(function(datavariabel) {
+							// console.log("variabel:"+datavariabel['val']);
+							j.forEach(function(dataturvar) {
+								// console.log("turvar:"+dataturvar['val']);
+								m.forEach(function(datatahun) {
+									// let last=datatahun[datatahun.length-1];
+									// console.log("tahun:"+datatahun['val']);
+									n.forEach(function(dataturtahun) {
+										// console.log("turtahun:"+dataturtahun['val']);
+										// var hasil = datalabel['val'].toString();
+										// console.log("hasil"+hasil+2);
+										var hasilkey = datalabel['val'].toString() + datavariabel['val'].toString() + dataturvar['val'].toString() + datatahun['val'].toString() + dataturtahun['val'].toString();
+										// console.log(datalabel['val'].toString()+datavariabel['val'].toString()+dataturvar['val'].toString()+datatahun['val'].toString()+dataturtahun['val'].toString());
+										arraydata.forEach(function(hasildata) {
+											// console.log(hasildata[hasilkey]);
+											if (datalabel['label'] == 'Pengeluaran Per Kapita Riil Disesuaikan (Rp.000)') {
+												datapengeluaran.push(hasildata[hasilkey].toString());
+											}
+											// this.ks.xdatakesehatan.push(hasildata[hasilkey].toString());
+										})
+									})
+
+
+								})
+							})
+						})
+
+					})
+
+					// console.log(dataahh);
+					this.apppengeluaran.chartOptions = {
+						xaxis: {
+							categories: lebelahh,
+						}
+					};
+					this.apppengeluaran.series = [
+						{
+							name: 'Pengeluaran Per Kapita Riil Disesuaikan (Rp.000)',
+
+							data: datapengeluaran
+						}
+					]
+				}
+			})
+		}
+	}
+});
+
+
+
+Vue.use(VueApexCharts);
+var apppindexppp = new Vue({
+	el: '#indexppp',
+	components: {
+		indexppp: VueApexCharts,
+	},
+	data: function() {
+		return {
+			url: 'http://localhost/bps/',
+
+			chartOptions: {
+
+				chart: {
+					id: 'vuechart-example'
+				},
+				
+				xaxis: {
+
+					labels: {
+						style: {
+							colors: "#ffffff",
+							fontSize: '12px',
+							fontFamily: 'Helvetica, Arial, sans-serif',
+							cssClass: 'apexcharts-xaxis-label',
+						},
+					},
+
+				},
+
+				colors: ['#ff00c7', '#06cade'],
+				fill: {
+					type: 'gradient',
+					gradient: {
+						gradientToColors: ['#f60236', '#92f602'],
 
 						type: 'vertical',
 
@@ -1849,9 +2053,6 @@ var apppengeluaran = new Vue({
 											if (datalabel['label'] == 'Indeks PPP (Daya Beli)') {
 												datappp.push(hasildata[hasilkey].toString());
 											}
-											if (datalabel['label'] == 'Pengeluaran Per Kapita Riil Disesuaikan (Rp.000)') {
-												datapengeluaran.push(hasildata[hasilkey].toString());
-											}
 											// this.ks.xdatakesehatan.push(hasildata[hasilkey].toString());
 										})
 									})
@@ -1864,21 +2065,16 @@ var apppengeluaran = new Vue({
 					})
 
 					// console.log(dataahh);
-					this.apppengeluaran.chartOptions = {
+					this.apppindexppp.chartOptions = {
 						xaxis: {
 							categories: lebelahh,
 						}
 					};
-					this.apppengeluaran.series = [{
+					this.apppindexppp.series = [{
 							name: 'Indeks PPP (Daya Beli)',
 
 							data: datappp
 						},
-						{
-							name: 'Pengeluaran Per Kapita Riil Disesuaikan (Rp.000)',
-
-							data: datapengeluaran
-						}
 					]
 				}
 			})

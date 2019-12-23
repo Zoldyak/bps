@@ -37,10 +37,13 @@ border-radius: 15px 75px;
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <div id="appl">
+            <!-- <div id="appl">
               <div id="chart" ref="chart">
                 <apexcharts type="donut" width="100%" :height="480" :options="chartOptions" :series="series1"></apexcharts>
               </div>
+            </div> -->
+            <div class="" id="data2013">
+               <apexchartdata2013 type=bar height=350 :options="chartOptions" :series="series" />
             </div>
             <!-- <p class="font-weight-normal  font-italic" style="color: #ffffff;font-family:'dubielitalic',Arial, sans-serif; font-size: 1.9em;">
               IPM
@@ -58,7 +61,7 @@ border-radius: 15px 75px;
               </div>
               <div class="col-md-10">
                 <p class="text-justify" style="color: #fff;font-family:'dubielitalic',Arial, sans-serif; font-size: 1em;">
-                  Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
+                Indeks Pembangunan Manusia (IPM) merupakan indikator penting untuk mengukur keberhasilan dalam upaya membangun kualitas hidup manusia (masyarakat/penduduk). IPM dapat menentukan peringkat atau level pembangunan suatu wilayah/negara.
                 </p>
               </div>
             </div>
@@ -67,11 +70,11 @@ border-radius: 15px 75px;
               <div class="col-md-2">
                 <code class="border-circle" style="color:#fff;">
                   <i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
-</code>
+              </code>
               </div>
               <div class="col-md-10">
                 <p class="text-justify" style="color: #fff;font-family:'dubielitalic',Arial, sans-serif; font-size: 1em;">
-                  Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
+                  Indeks Pendidikan  merupakan pengetahuan dalam hal ini tingkat pendidikan juga diakui secara luas sebagai unsur mendasar dari pembangunan manusia.
                 </p>
               </div>
             </div>
@@ -84,7 +87,21 @@ border-radius: 15px 75px;
               </div>
               <div class="col-md-10">
                 <p class="text-justify" style="color: #fff;font-family:'dubielitalic',Arial, sans-serif; font-size: 1em;">
-                  Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
+                Indeks Kesehatan merupakan cerminan usia maksimum yang diharapkan seseorang untuk dapat bertahan hidup. Pembangunan manusia harus lebih mengupayakan agar penduduk dapat mencapai usia harapan hidup yang panjang
+                </p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-2">
+                <code class="border-circle" style="color:#fff;">
+                  <i class="fa fa-money fa-lg" aria-hidden="true"></i>
+
+                </code>
+              </div>
+              <div class="col-md-10">
+                <p class="text-justify" style="color: #fff;font-family:'dubielitalic',Arial, sans-serif; font-size: 1em;">
+                Pengeluaran Per Kapita merupakan standar hidup layak Indikator standar hidup layak bisa dilihat dari daya beli masyarakat yang meliputi
                 </p>
               </div>
             </div>
@@ -105,10 +122,10 @@ border-radius: 15px 75px;
               <div class="card" style=";background: #ffffff21;border-radius: 5px;">
 
                 <div class="card-header" style="color:#fff">
-                  Grafik IPM
+                  Indeks PPP (Daya Beli)
                 </div>
-                <div class="" id="data2013">
-                   <apexchartdata2013 type=bar height=350 :options="chartOptions" :series="series" />
+                <div class="" id="indexppp">
+                   <indexppp type=bar height=350 :options="chartOptions" :series="series" />
                 </div>
               </div>
             </div>
@@ -200,7 +217,7 @@ border-radius: 15px 75px;
               <div class="card" style=";background: #ffffff21;border-radius: 5px;">
 
                 <div class="card-header" style="color:#fff">
-                  Grafik Angka Harapan Hidup - Index Kesehatan
+                  Angka Harapan Hidup - Index Kesehatan
                 </div>
                 <div id="AngkaHarapanHidup">
                  <div>
@@ -256,11 +273,11 @@ border-radius: 15px 75px;
               <div class="card" style=";background: #ffffff21;border-radius: 5px;">
 
                 <div class="card-header" style="color:#fff">
-                Indeks PPP (Daya Beli) - Pengeluaran Per Kapita Riil Disesuaikan (Rp.000)
+                Pengeluaran Per Kapita Riil Disesuaikan (Rp.000)
                 </div>
-                <div id="pengeluaranppp">
+                <div id="pengeluaran">
                  <div>
-                   <pengeluaranppp width="100%" type="bar" height="400" :options="chartOptions" :series="series"></pengeluaranppp>
+                   <pengeluaran width="100%" type="bar" height="400" :options="chartOptions" :series="series"></pengeluaran>
                  </div>
                </div
               </div>
